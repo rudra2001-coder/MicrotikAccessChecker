@@ -22,7 +22,7 @@
             android:layout_marginBottom="8dp"
             style="?android:attr/progressBarStyleLarge" />
 
-        <!-- Internet Status with High Contrast -->
+        <!-- Internet Status -->
         <TextView
             android:id="@+id/textViewInternetStatus"
             android:layout_width="wrap_content"
@@ -33,72 +33,7 @@
             android:text="Checking internet..."
             android:layout_marginBottom="16dp"
             android:gravity="center" />
-
-
-        <!-- 1st Card for Authentication Fields -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editTextIpAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter IP address "
-                    android:textSize="18sp"
-                    android:padding="16dp" />
-
-                <EditText
-                    android:id="@+id/editTextUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter Username "
-                    android:textSize="18sp"
-                    android:padding="16dp" />
-
-                <EditText
-                    android:id="@+id/editTextpassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter Password "
-                    android:textSize="18sp"
-                    android:padding="16dp"
-                    android:inputType="text" />
-
-                <EditText
-                    android:id="@+id/editTextPort"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="API Port 8728 "
-                    android:textSize="18sp"
-                    android:padding="16dp"
-                    android:inputType="number" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Login Button with Enhanced Accessibility -->
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#4CAF50"
-            android:text="Login"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-
-        <!-- CardView for aesthetic grouping and accessibility -->
+        <!-- ✅ IP Ping Checker (Moved to Second) -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -149,7 +84,8 @@
                     android:gravity="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <!-- CardView for API Port Validator -->
+
+        <!-- ✅ API Port Validator (Moved to Top) -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -204,6 +140,70 @@
                     android:background="#B2DFDB" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+
+        <!-- 🔒 Login Section (Moved to Last) -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editTextIpAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Enter IP address"
+                    android:textSize="18sp"
+                    android:padding="16dp" />
+
+                <EditText
+                    android:id="@+id/editTextUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Enter Username"
+                    android:textSize="18sp"
+                    android:padding="16dp" />
+
+                <EditText
+                    android:id="@+id/editTextpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Enter Password"
+                    android:textSize="18sp"
+                    android:padding="16dp"
+                    android:inputType="textPassword" />
+
+                <EditText
+                    android:id="@+id/editTextPort"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="API Port 8728"
+                    android:textSize="18sp"
+                    android:padding="16dp"
+                    android:inputType="number" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Login Button -->
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#4CAF50"
+            android:text="Login"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
     </LinearLayout>
 </ScrollView>
