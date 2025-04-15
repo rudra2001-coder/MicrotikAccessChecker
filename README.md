@@ -16,7 +16,7 @@
 1. Clone the repository:
 
    ```bash
- [  git clone https://github.com/your-username/mikrotik-access-checker.git](https://github.com/rudra2001-coder/MicrotikAccessChecker.git)
+ git clone https://github.com/your-username/mikrotik-access-checker.git
    ```
 
 2. Open the project in **Android Studio**.
