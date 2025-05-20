@@ -1,50 +1,67 @@
+# MikroTik Access Checker – Android App
 
+A powerful and user-friendly Android app that allows you to check and verify access to MikroTik routers using API login credentials. Ideal for ISP businesses and network administrators who need a quick, reliable tool to validate MikroTik router connectivity.
 
-# MikroTik Access Checker
+## ✅ Key Features
 
-**MikroTik Access Checker** is a simple Android app that allows users to verify **IP**, **username**, **password**, and **API port** before connecting to a MikroTik router. This tool helps save time and prevent errors during the login process by providing real-time error detection and detailed messages if the login fails.
+* 🔐 **MikroTik Login Checker**: Enter IP, username, password, and port to verify connection.
+* 📡 **Real-time Status Feedback**: Instantly know whether your login was successful or not.
+* ⚠️ **Detailed Error Reporting**: Clear error messages for invalid credentials, incorrect ports, and unreachable IPs.
+* 💡 **Simple and Lightweight UI**: Built using Jetpack Compose with a clean and intuitive layout.
+* 🔄 **Flexible Input Fields**: Easily test multiple routers or access configurations.
 
-## Features
+## 🛠️ Tech Stack
 
-- **Verify IP, username, password, and API port** before connecting to the MikroTik device.
-- **Real-time error detection** with detailed messages if login fails.
-- **Simple and user-friendly** interface for easy access to all necessary fields.
-- Saves time by preventing connection attempts with incorrect credentials.
+* **Language**: Kotlin
+* **UI**: Jetpack Compose
+* **Networking**: Kotlin Coroutine-based asynchronous tasks
+* **API**: MikroTik RouterOS API using third-party libraries
 
-## Installation
+## 📦 Installation & Setup
 
-1. Clone the repository:
+### Prerequisites
+
+* Android Studio (latest version recommended)
+* Android device or emulator running API level 21+
+
+### Steps
+
+1. **Clone the Repository**:
 
    ```bash
- git clone https://github.com/your-username/mikrotik-access-checker.git
+   git clone https://github.com/rudra2001-coder/MicrotikAccessChecker.git
    ```
 
-2. Open the project in **Android Studio**.
+2. **Open the Project**:
 
-3. Build and run the project on your device or emulator.
+   * Launch Android Studio.
+   * Select **Open an Existing Project** and navigate to the cloned directory.
 
-4. Alternatively, download the APK file directly:
+3. **Build the App**:
 
-   [Download MikroTik Access Checker APK](https://drive.google.com/file/d/12SQLwVo2b7cUncqvFj3qHnOeTXE2SyCz/view?usp=sharing)
+   * Make sure all dependencies are installed.
+   * Click **Run** to build and launch the app on your device/emulator.
 
-## Usage
+## 🧪 Usage
 
-1. Launch the **MikroTik Access Checker** app.
-2. Enter the **IP address**, **username**, **password**, and **API port** for your MikroTik device.
-3. Click **Check Access** to verify the credentials.
-4. If the login fails, the app will display an error message with the specific reason.
+1. Enter your MikroTik **IP address**, **API port**, **username**, and **password**.
+2. Tap on the **Check Access** button.
+3. The app will attempt to establish a connection using MikroTik's API.
+4. You'll receive a success or error message based on the result.
 
-## Screenshots
+## 📸 Screenshots
 
-*Include some screenshots of the app here, 
 https://drive.google.com/file/d/1cfmNaKI0x9-Taob3eqd34b49K148aT5I/view?usp=sharing
-## Contributing
+## 📄 License
 
-Feel free to fork the repository and submit pull requests. If you find any bugs or have suggestions for improvements, please open an issue.
+This project is licensed under the [MIT License](LICENSE).
 
-## License
+## 🙋‍♂️ Author
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Mahmudul Hasan Rudra**
 
----
+* 🔗 [My Portfolio Website](https://rudra2001-coder.github.io/my/)
+* 📧 [Rudra](mailto:mhrudra064@example.com)
+* 🧑‍💼 [LinkedIn – Mahmudul Hasan Rudra](https://www.linkedin.com/in/mahmudul-hasan-rudra/)
 
+.
