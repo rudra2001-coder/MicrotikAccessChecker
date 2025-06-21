@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">MAC</string>
+    <string name="app_name">Mikrotik Access Checker </string>
+    <string name="app_logo">Application Logo</string>
+    <string name="checking_internet">Checking internet connection...</string>
+    <string name="api_port_validator">API Port Validator</string>
+    <string name="ping_checker">Ping Checker</string>
+    <string name="login_section">MikroTik Login</string>
+    <string name="enter_ip_or_domain">Enter IP or domain</string>
+    <string name="enter_api_port">API Port (e.g. 8728)</string>
+    <string name="enter_ip_address">IP Address (e.g. 8.8.8.8)</string>
+    <string name="check_api_port">Check Port</string>
+    <string name="ping">Ping</string>
+    <string name="ip_address">IP Address</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="api_port">API Port</string>
+    <string name="login">Login</string>
 </resources>
