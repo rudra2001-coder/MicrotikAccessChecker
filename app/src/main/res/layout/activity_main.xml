@@ -1,73 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="@color/white">
+    android:background="@color/light_gray_background"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:padding="16dp">
+
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="63dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/app_logo"
+                android:src="@drawable/android_app_icon"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="24sp"
+                android:textColor="@color/primary_dark"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textViewInternetStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checking_internet"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
 
         <!-- Progress Indicator -->
         <ProgressBar
             android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_gravity="center"
-            android:layout_marginBottom="8dp"
-            style="?android:attr/progressBarStyleLarge" />
-
-        <!-- Internet Status -->
-        <TextView
-            android:id="@+id/textViewInternetStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="Checking internet..."
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:gravity="center" />
-        <!-- ✅ IP Ping Checker (Moved to Second) -->
-        <androidx.cardview.widget.CardView
+            android:visibility="gone"/>
+
+        <!-- API Port Validator Card -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <EditText
-                    android:id="@+id/editTextIp"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter IP address (e.g., 8.8.8.8)"
+                    android:layout_height="wrap_content"
+                    android:text="@string/api_port_validator"
                     android:textSize="18sp"
-                    android:padding="16dp"
-                    android:importantForAutofill="no"
-                    android:autofillHints="none" />
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextApiValidationIp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_ip_or_domain"
+                        android:inputType="textUri"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextApiValidationPort"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_api_port"
+                        android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/buttonCheckApiPort"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/secondary_color"
+                    android:text="@string/check_api_port"
+                    android:textColor="@android:color/white"
+                    style="@style/Widget.MaterialComponents.Button"/>
+                <TextView
+                    android:id="@+id/textViewApiPortResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="API Port status "
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:background="#B2DFDB" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Ping Checker Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ping_checker"
+                    android:textSize="18sp"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextIp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_ip_address"
+                        android:inputType="textUri"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/buttonPing"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:text="Ping"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:backgroundTint="#3F51B5"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/secondary_color"
+                    android:text="@string/ping"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    style="@style/Widget.MaterialComponents.Button"/>
+
 
                 <TextView
                     android:id="@+id/textViewResult"
@@ -83,127 +197,97 @@
                     android:background="#03A9F4"
                     android:gravity="center" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <!-- ✅ API Port Validator (Moved to Top) -->
-        <androidx.cardview.widget.CardView
+        <!-- Login Section -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editTextApiValidationIp"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter IP Address or Domain"
-                    android:textSize="18sp"
-                    android:padding="16dp" />
-
-                <EditText
-                    android:id="@+id/editTextApiValidationPort"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter API Port (e.g. 8728)"
-                    android:textSize="18sp"
-                    android:padding="16dp"
-                    android:inputType="number" />
-
-                <Button
-                    android:id="@+id/buttonCheckApiPort"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:backgroundTint="#009688"
-                    android:text="Check API Port"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/textViewApiPortResult"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/login_section"
                     android:textSize="18sp"
-                    android:text="API Port status will appear here"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:background="#B2DFDB" />
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextIpAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ip_address"
+                        android:inputType="textUri"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/username"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPort"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/api_port"
+                        android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/buttonLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/primary_color"
+                    android:text="@string/login"
+                    android:textColor="@android:color/white"
+                    style="@style/Widget.MaterialComponents.Button"/>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-        <!-- 🔒 Login Section (Moved to Last) -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editTextIpAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter IP address"
-                    android:textSize="18sp"
-                    android:padding="16dp" />
-
-                <EditText
-                    android:id="@+id/editTextUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter Username"
-                    android:textSize="18sp"
-                    android:padding="16dp" />
-
-                <EditText
-                    android:id="@+id/editTextpassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="Enter Password"
-                    android:textSize="18sp"
-                    android:padding="16dp"
-                    android:inputType="textPassword" />
-
-                <EditText
-                    android:id="@+id/editTextPort"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="API Port 8728"
-                    android:textSize="18sp"
-                    android:padding="16dp"
-                    android:inputType="number" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Login Button -->
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#4CAF50"
-            android:text="Login"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </ScrollView>

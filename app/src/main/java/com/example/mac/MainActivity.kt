@@ -163,7 +163,7 @@ class MainActivity : AppCompatActivity() {
                     fetchRouterSystemInfo(apiConnection, textView)
                 }
             } catch (e: UnknownHostException) {
-                showError(textView, "Invalid Router IP or No Network!", e)
+                showError(textView, "Invalid Router IP ", e)
             } catch (e: SocketTimeoutException) {
                 showError(textView, "Connection Timed Out! Router unreachable.", e)
             } catch (e: MikrotikApiException) {
@@ -190,6 +190,7 @@ class MainActivity : AppCompatActivity() {
                     systemInfo.append("Version: ${result["version"]}\n")
                     systemInfo.append("CPU: ${result["cpu"]}\n")
                     systemInfo.append("Memory: ${result["free-memory"]}/${result["total-memory"]}\n")
+
                 }
 
                 withContext(Dispatchers.Main) { textView.text = systemInfo.toString() }
