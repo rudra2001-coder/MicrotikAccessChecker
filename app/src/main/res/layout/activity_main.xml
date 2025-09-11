@@ -25,8 +25,7 @@
                 android:layout_width="63dp"
                 android:layout_height="64dp"
                 android:contentDescription="@string/app_logo"
-                android:src="@drawable/android_app_icon"
-                 />
+                android:src="@drawable/android_app_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,10 +83,10 @@
                     android:layout_marginBottom="12dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextApiValidationIp"
@@ -98,10 +97,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginBottom="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextApiValidationPort"
@@ -120,17 +119,17 @@
                     android:text="@string/check_api_port"
                     android:textColor="@android:color/white"
                     style="@style/Widget.MaterialComponents.Button"/>
+
                 <TextView
                     android:id="@+id/textViewApiPortResult"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="API Port status "
+                    android:textSize="16sp"
+                    android:text="API Port status"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:background="#B2DFDB" />
-
+                    android:background="#B2DFDB"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -160,10 +159,10 @@
                     android:layout_marginBottom="12dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginBottom="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextIp"
@@ -182,20 +181,18 @@
                     android:textColor="@android:color/white"
                     style="@style/Widget.MaterialComponents.Button"/>
 
-
                 <TextView
                     android:id="@+id/textViewResult"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="normal"
+                    android:textSize="16sp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Result will be displayed here"
                     android:textColor="@color/black"
                     android:padding="12dp"
                     android:background="#03A9F4"
-                    android:gravity="center" />
+                    android:gravity="center"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -225,10 +222,10 @@
                     android:layout_marginBottom="12dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextIpAddress"
@@ -239,10 +236,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextUsername"
@@ -252,10 +249,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextpassword"
@@ -266,10 +263,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginBottom="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextPort"
@@ -289,5 +286,43 @@
                     style="@style/Widget.MaterialComponents.Button"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Router Info + Services -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Router System Info_Ports"
+                    android:textSize="18sp"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/textViewRouterInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="System info and services will appear here after login."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:padding="12dp"
+                    android:background="#E3F2FD"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 </ScrollView>

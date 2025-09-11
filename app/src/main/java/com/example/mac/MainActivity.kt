@@ -12,28 +12,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.legrange.mikrotik.ApiConnection
 import me.legrange.mikrotik.MikrotikApiException
-import me.legrange.mikrotik.ResultListener
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.net.InetSocketAddress
-import java.io.IOException;
-import java.net.Socket;
-import javax.net.SocketFactory;
-import javax.net.ssl.SSLSocketFactory;
+import java.io.IOException
+import java.net.Socket
+import javax.net.SocketFactory
 import android.graphics.Color
-import android.widget.*
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
-
-
-
-
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,11 +44,13 @@ class MainActivity : AppCompatActivity() {
         val editTextPort = findViewById<EditText>(R.id.editTextPort)
         buttonLogin = findViewById(R.id.buttonLogin)
         progressBar = findViewById(R.id.progressBar)
+
         // API Port Validator views
         val editTextApiIp = findViewById<EditText>(R.id.editTextApiValidationIp)
         val editTextApiPort = findViewById<EditText>(R.id.editTextApiValidationPort)
         val buttonCheckApiPort = findViewById<Button>(R.id.buttonCheckApiPort)
         val textViewApiPortResult = findViewById<TextView>(R.id.textViewApiPortResult)
+
         // Check internet status
         updateInternetStatus(textViewInternetStatus)
 
@@ -74,7 +63,8 @@ class MainActivity : AppCompatActivity() {
                 else -> pingIp(ipAddress, textViewResult)
             }
         }
-// API Port Check functionality
+
+        // API Port Check functionality
         buttonCheckApiPort.setOnClickListener {
             val ip = editTextApiIp.text.toString().trim()
             val port = editTextApiPort.text.toString().trim().toIntOrNull() ?: 8728
@@ -85,16 +75,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-        buttonPing.setOnClickListener {
-            val ipAddress = editTextIp.text.toString().trim()
-            when {
-                ipAddress.isEmpty() -> editTextIp.error = "Please enter an IP address"
-                !isValidIpAddress(ipAddress) -> editTextIp.error = "Invalid IP format"
-                else -> pingIp(ipAddress, textViewResult)
-            }
-        }
-
+        // Router Login
         buttonLogin.setOnClickListener {
             val routerIp = editTextRouterIp.text.toString().trim()
             val username = editTextUsername.text.toString().trim()
@@ -109,6 +90,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun checkApiPort(ip: String, port: Int, textView: TextView) {
         lifecycleScope.launch {
             try {
@@ -144,17 +126,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun connectToRouterOS
-                (ip: String, username: String, password: String, port: Int, textView: TextView) {
+    private fun connectToRouterOS(ip: String, username: String, password: String, port: Int, textView: TextView) {
         buttonLogin.isEnabled = false
         progressBar.visibility = View.VISIBLE
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 apiConnection = ApiConnection.connect(SocketFactory.getDefault(), ip, port, 5000)
-
-
-
                 apiConnection.login(username, password)
 
                 withContext(Dispatchers.Main) {
@@ -189,11 +167,21 @@ class MainActivity : AppCompatActivity() {
                     systemInfo.append("Model: ${result["board-name"]}\n")
                     systemInfo.append("Version: ${result["version"]}\n")
                     systemInfo.append("CPU: ${result["cpu"]}\n")
-                    systemInfo.append("Memory: ${result["free-memory"]}/${result["total-memory"]}\n")
-
+                    systemInfo.append("Memory: ${result["free-memory"]}/${result["total-memory"]}\n\n")
                 }
 
-                withContext(Dispatchers.Main) { textView.text = systemInfo.toString() }
+                // Get all RouterOS service ports (Winbox, API, API-SSL, SSH, etc.)
+                val services = connection.execute("/ip/service/print")
+                for (service in services) {
+                    val name = service["name"]
+                    val port = service["port"]
+                    val disabled = service["disabled"]
+                    systemInfo.append("Service: $name\nPort: $port\nStatus: ${if (disabled == "true") "Disabled" else "Enabled"}\n\n")
+                }
+
+                withContext(Dispatchers.Main) {
+                    textView.text = systemInfo.toString()
+                }
             } catch (e: Exception) {
                 showError(textView, "Failed to fetch system info", e)
             }
@@ -230,8 +218,10 @@ class MainActivity : AppCompatActivity() {
         val isConnected = capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
 
         textView.text = if (isConnected) "Internet: Connected" else "Internet: Disconnected"
-        textView.setTextColor(if (isConnected) getColor(android.R.color.holo_green_dark)
-        else getColor(android.R.color.holo_red_dark))
+        textView.setTextColor(
+            if (isConnected) getColor(android.R.color.holo_green_dark)
+            else getColor(android.R.color.holo_red_dark)
+        )
     }
 
     private fun showError(textView: TextView, message: String, e: Exception) {
